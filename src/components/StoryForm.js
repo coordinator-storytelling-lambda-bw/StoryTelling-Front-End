@@ -2,15 +2,81 @@ import React from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import Date from './Date';
+
+
+import styled from 'styled-components';
+
+const FormTitle = styled.h1`
+  font-family: 'Finger Paint', cursive;
+  font-size: 3rem;
+  color: #faa220;
+  text-shadow: 2px 2px 4px #c64f18;
+  margin: 0;
+`;
+
+const TextField = styled.div`
+  background-color: #14b1ab;
+  max-width: 500px;
+  border-radius: 10px;
+  margin: 10px auto;
+  padding: 10px;
+  border: solid 4px #107ba3;
+
+  input[type='text'],
+  input::after,
+  textarea {
+    background-color: #3a3480;
+    border: 4px solid #faa220;
+    color: white;
+  }
+  input::placeholder,
+  select,
+  textarea::placeholder {
+    color: #14b1ab;
+    background-color: #3a3480;
+  }
+
+  input,
+  select {
+    width: 250px;
+  }
+
+  textarea {
+    width: 400px;
+    height: 200px;
+    border: 4px solid #c0326a;
+  }
+
+  select {
+    border: 4px solid #c0326a;
+  }
+
+  input,
+  select,
+  textarea {
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    margin: 5px;
+  }
+`;
+
+const PrettyButton = styled.button`
+
+background-color: #c0326a;
+font-size: 20px;
+color: white;
+padding: 8px;
+
+`
+
 
 function StoryForm({ errors, touched }) {
-  
-  
-
-  
   return (
-    <Form>
+    <Form><TextField>
+
+    <FormTitle>Share Your Story</FormTitle>
+
       <div>
         {touched.title && errors.title && <p>{errors.title}</p>}
         <Field type='text' name='title' placeholder='Story Title' />
@@ -43,79 +109,45 @@ function StoryForm({ errors, touched }) {
       </div>
 
       <div>
-        {touched.description && errors.description && (
-          <p>{errors.description}</p>
-        )}
-        <Field type='text' name='description' placeholder='Story Description' />
-      </div>
-      <div></div>
-      <div>
         {touched.content && errors.content && <p>{errors.content}</p>}
-        <Field
-          component='textarea'
-          name='content'
-          placeholder='Story Content'
-        />
+        <Field component='textarea' name='story' placeholder='Story Content' />
       </div>
-      <div><Date /></div>
-      <button>Submit Story</button>
-    </Form>
+
+      <PrettyButton>Submit Story</PrettyButton>
+      </TextField></Form>
   );
 }
 
 const FormikStorySubmitForm = withFormik({
-  mapPropsToValues({ title, country, description, content }) {
+  mapPropsToValues({ story, country, title }) {
     return {
-      title: title || '',
+      story: story || '',
       country: country || '',
-      description: description || '',
-      content: content || ''
+      title: title || ''
     };
   },
 
   validationSchema: Yup.object().shape({
-    title: Yup.string().required(),
+    story: Yup.string().required(),
     country: Yup.string().required(),
-    description: Yup.string().required(),
-    content: Yup.string().required()
+    title: Yup.string().required()
   }),
 
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     console.log(values);
-    if (values.input !== values.input) {
-      setErrors({ username: "That username doesn't exist" });
-    } else {
-      axios
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        // CHECK API
-        .post(
-          'https://storytelling-back-end.herokuapp.com/api/auth/STORYSUBMIT',
-          values
-        )
-        .then((res) => {
-          console.log(res);
-          localStorage.setItem('token', res.data.token);
-          resetForm();
-          setSubmitting(false);
-        })
-        .catch((err) => {
-          console.log(err);
-          setSubmitting(false);
-        });
-    }
+
+    axios
+    .post('https://storytelling-back-end.herokuapp.com/api/stories/add', values, {headers: {authorization: localStorage.getItem('token')}})
+      .then((res) => {
+        console.log(res);
+        resetForm();
+        setSubmitting(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSubmitting(false);
+      });
   }
 })(StoryForm);
-// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API
-// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API
-// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API// CHECK API
 
 export default FormikStorySubmitForm;
-
-// title country description date
