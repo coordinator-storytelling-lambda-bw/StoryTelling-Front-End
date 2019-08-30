@@ -14,24 +14,20 @@ const Nav = () => {
         <div className='flex space'>
             <h1>StoryTelling</h1>
             {token ? 
-                <div>
-                    <Link to='feed'><button>Main Feed</button></Link>
-                    <Link to='profile'><button>Profile</button></Link>
-                    <button onClick={logOut}>Log Out</button>
-                    <span>Welcome {user.username}</span>
+                <div className='nav'>
+                    <Link to='feed'><button className='nav-link'>Main Feed</button></Link>
+                    <Link to='profile'><button className='nav-link'>Profile</button></Link>
+                    <button className='nav-link' onClick={logOut}>Log Out</button>
+                    <span className='welcome'>Welcome {user.username}</span>
                 </div>
                 :
                 <div>
-                    <Link to='/'><button>Home</button></Link>
+                    <Link to='/'><button  className='nav-link'>Home</button></Link>
                 </div>
-                    
-                
-
-
             }
             {/* <div className='flex'>
-                
-                
+            
+            
                 {token ? Sign Out</button> : null}
             </div> */}
             

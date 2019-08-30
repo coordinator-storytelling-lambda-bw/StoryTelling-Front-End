@@ -22,17 +22,22 @@ const ProfilePage = () => {
     }, [])
     if(!user) return <div>Loading...</div>
     return (
-        <div>
-            <h1>{user.firstName} {user.lastName} Profile</h1>
-            <h2>Username: {user.username}</h2>
-            <h2>Email: {user.email}</h2>
-            <h2>{user.country}</h2>
-            <h2>{user.workTitle}</h2>
-            <h1>Saved Stories</h1>
+        <div className='donor-profile'>
+            <div className='donor-header'>
+                <h1>{user.firstName} {user.lastName} Profile</h1>
+            </div>
+            <div  className='donor-info'>
+                <p>Username: {user.username}</p>
+                <p>Email: {user.email}</p>
+                <p>Country: {user.country}</p>
+                <p> Worktitle: {user.workTitle}</p>
+                <h1>Saved Stories</h1>
             {stories.map(story=>(
-                <div>{story.title}</div>
+                <div className='saved-item'>{story.title}</div>
             ))}
         </div>
+            </div>
+            
     )
 }
 export  default ProfilePage

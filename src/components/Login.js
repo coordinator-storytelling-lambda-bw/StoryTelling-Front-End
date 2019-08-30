@@ -55,7 +55,7 @@ const FormikLoginForm = withFormik({
         values.history.push('/feed')
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err, 'hi');
         setSubmitting(false);
       });
   }
