@@ -7,7 +7,6 @@ const PageTitle = styled.h1`
   font-family: 'Finger Paint', cursive;
   font-size: 3rem;
   color: #faa220;
-  text-shadow: 2px 2px 4px #c64f18;
   text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.8);
 `;
 const TopBar = styled.div`

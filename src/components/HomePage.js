@@ -24,10 +24,10 @@ export default function HomePage(){
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ullamcorper nibh ligula, sit amet efficitur risus varius vel. Nulla mauris libero, suscipit eu posuere nec, convallis sed felis. Ut dapibus volutpat arcu, non cursus nisl cursus et. In tortor dui, efficitur id nisl at, condimentum cursus mauris. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Pellentesque vel consequat sem. Vivamus fringilla magna a est sagittis convallis. Sed eu est lacinia, egestas lectus vitae, euismod dolor. Etiam nulla turpis, congue eu ultricies et, viverra elementum nisl. Quisque semper condimentum eros ac gravida. Fusce eget iaculis erat. Nulla eleifend elementum risus vel commodo. Integer hendrerit, dui non molestie dictum, velit ante sagittis erat, vel eleifend libero neque ut tortor. Integer quis accumsan elit, lacinia tincidunt sem.</p>
       </div> 
       <div className='homepage-box-2'>
-        <h2 className='log-in-header'>Sign up/Log in</h2>
+      <h2>Join the Community!</h2>
         <NavLink className='btn-1' to='/signup'>Sign Up</NavLink>
         <NavLink className='btn-2' to='/login'>Log in</NavLink>
-        <h3>Join the community!</h3>
+        
       </div>
       <div className='story-preview'>
         <h1>Some Recent Stories</h1>
