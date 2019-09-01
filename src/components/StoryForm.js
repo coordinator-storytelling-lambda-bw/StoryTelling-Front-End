@@ -6,9 +6,6 @@ import axios from 'axios';
 
 import styled from 'styled-components';
 
-const StoryFormElement = styled.form`
-margin: 30px 20px;
-`
 
 const FormTitle = styled.h1`
   font-family: 'Finger Paint', cursive;
@@ -88,7 +85,7 @@ box-shadow: 1px 2px 0px 1px rgba(0, 0, 0, 0.69);
 
 function StoryForm({ errors, touched }) {
   return (
-    <StoryFormElement><TextField>
+    <Form className="storyForm"><TextField>
 
     <FormTitle>Share Your Story</FormTitle>
 
@@ -129,7 +126,7 @@ function StoryForm({ errors, touched }) {
       </div>
 
       <PrettyButton>Submit Story</PrettyButton>
-      </TextField></StoryFormElement>
+      </TextField></Form>
   );
 }
 
