@@ -15,6 +15,7 @@ const TopBar = styled.div`
   background-repeat: repeat;
   margin-bottom: 10px;
   flex-wrap: wrap;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
 `;
 
 const Nav = () => {
