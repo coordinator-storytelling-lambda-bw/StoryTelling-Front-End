@@ -17,39 +17,49 @@ const Feed = () => {
     if(!stories) return <div>Loading...</div>
     return (
         <div>
-            <div className='country-tabs'>
-                <button onClick={()=>{setCountry('all')}} className='nav-link'>All</button>
-                <button onClick={()=>{setCountry('Bolivia')}} className='nav-link'>bolivia</button>
-                <button onClick={()=>{setCountry('brazil')}} className='nav-link'>brazil</button>
-                <button onClick={()=>{setCountry('cambodia')}} className='nav-link'>cambodia</button>
-                <button onClick={()=>{setCountry('colombia')}} className='nav-link'>colombia</button>
-                <button onClick={()=>{setCountry('ecuador')}} className='nav-link'>ecuador</button>
-                <button onClick={()=>{setCountry('el salvador')}} className='nav-link'>el salvador</button>
-                <button onClick={()=>{setCountry('ghana')}} className='nav-link'>ghana</button>
-                <button onClick={()=>{setCountry('guatemala')}} className='nav-link'>guatemala</button>
-                <button onClick={()=>{setCountry('haiti')}} className='nav-link'>haiti</button>
-                <button onClick={()=>{setCountry('honduras')}} className='nav-link'>honduras</button>
-                <button onClick={()=>{setCountry('kiribati')}} className='nav-link'>kiribati</button>
-                <button onClick={()=>{setCountry('madagascar')}} className='nav-link'>madagascar</button>
-                <button onClick={()=>{setCountry('mongolia')}} className='nav-link'>mongolia</button>
-                <button onClick={()=>{setCountry('nicaragua')}} className='nav-link'>nicaragua</button>
-                <button onClick={()=>{setCountry('paraguay')}} className='nav-link'>paraguay</button>
-                <button onClick={()=>{setCountry('peru')}} className='nav-link'>peru</button>
-                <button onClick={()=>{setCountry('philippines')}} className='nav-link'>philippines</button>
-                <button onClick={()=>{setCountry('sierra leone')}} className='nav-link'>sierra leone</button>
-                <button onClick={()=>{setCountry('zimbabwe')}} className='nav-link'>zimbabwe</button>
+            <select onChange={(e) => setCountry(e.target.value)} className='country-tabs'>
+                <option  className='nav-link'>All</option>
+                <option  className='nav-link'>bolivia</option>
+                <option  className='nav-link'>brazil</option>
+                <option  className='nav-link'>cambodia</option>
+                <option  className='nav-link'>colombia</option>
+                <option  className='nav-link'>ecuador</option>
+                <option  className='nav-link'>el salvador</option>
+                <option  className='nav-link'>ghana</option>
+                <option  className='nav-link'>guatemala</option>
+                <option  className='nav-link'>haiti</option>
+                <option  className='nav-link'>honduras</option>
+                <option  className='nav-link'>kiribati</option>
+                <option  className='nav-link'>madagascar</option>
+                <option  className='nav-link'>mongolia</option>
+                <option  className='nav-link'>nicaragua</option>
+                <option  className='nav-link'>paraguay</option>
+                <option  className='nav-link'>peru</option>
+                <option  className='nav-link'>philippines</option>
+                <option  className='nav-link'>sierra leone</option>
+                <option  className='nav-link'>zimbabwe</option>
 
-            </div>
+            </select>
             {stories.map((each) => {
                 console.log(each.country)
                 console.log(country)
-                if(each.country === country || country === 'all'){
+                if(country.toLowerCase() === 'all'){
                     return(
-                <div key={each.id}>
-                    <h2>{each.story}</h2>
-                    <h5>{each.posted_by}</h5>
-                    <NavLink to={`/feed/${each.id}`}>Full Page View</NavLink>
-                </div>
+                    <div key={each.id}>
+                        <h2>{each.story}</h2>
+                        <h5>{each.posted_by}</h5>
+                        <NavLink to={`/feed/${each.id}`}>Full Story</NavLink>
+                    </div>
+                    )
+                } else if(each.country.toLowerCase() === country.toLowerCase()) {
+                    return (
+                        <div>
+                            <div key={each.id}>
+                                <h2>{each.story}</h2>
+                                <h5>{each.posted_by}</h5>
+                                <NavLink to={`/feed/${each.id}`}>Full Story</NavLink>
+                            </div>
+                        </div>
                     )
                 }
             })}

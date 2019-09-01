@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
@@ -119,11 +119,12 @@ function StoryForm({ errors, touched }) {
 }
 
 const FormikStorySubmitForm = withFormik({
-  mapPropsToValues({ story, country, title }) {
+  mapPropsToValues({ story, country, title, history }) {
     return {
       story: story || '',
       country: country || '',
-      title: title || ''
+      title: title || '',
+      history: history
     };
   },
 
@@ -137,11 +138,12 @@ const FormikStorySubmitForm = withFormik({
     console.log(values);
 
     axios
-    .post('https://storytelling-back-end.herokuapp.com/api/stories/add', values, {headers: {authorization: localStorage.getItem('token')}})
+    .post('https://storytelling-back-end.herokuapp.com/api/stories/add', {story: values.story, country:values.country, title: values.country} , {headers: {authorization: localStorage.getItem('token')}})
       .then((res) => {
         console.log(res);
         resetForm();
         setSubmitting(false);
+        values.history.push('/feed')
       })
       .catch((err) => {
         console.log(err);

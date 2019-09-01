@@ -15,8 +15,9 @@ const Nav = () => {
             <h1>StoryTelling</h1>
             {token ? 
                 <div className='nav'>
-                    <Link to='feed'><button className='nav-link'>Main Feed</button></Link>
-                    <Link to='profile'><button className='nav-link'>Profile</button></Link>
+                    <Link to='/feed'><button className='nav-link'>Main Feed</button></Link>
+                    <Link to='/add'><button className='nav-link'>Add Story</button></Link>
+                    <Link to='/profile'><button className='nav-link'>Profile</button></Link>
                     <button className='nav-link' onClick={logOut}>Log Out</button>
                     <span className='welcome'>Welcome {user.username}</span>
                 </div>

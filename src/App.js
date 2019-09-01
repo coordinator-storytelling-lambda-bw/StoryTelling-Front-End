@@ -25,6 +25,7 @@ function App() {
         <PrivateRoute exact path='/feed' component={Feed} />
         <PrivateRoute exact path='/feed/:id' component={Story}/>
         <PrivateRoute exact path='/profile' component={ProfilePage} />
+        <PrivateRoute exact path='/add' component={StoryForm} />
     </div>
   );
 }

@@ -41,11 +41,19 @@ const ProfilePage = () => {
 
                 <h1>Saved Stories</h1>
                 {saved.map(story=>(
-                    <p>{story.title}</p>
+                    <div>
+                        <p>{story.title}</p>
+                        <p>{story.story}</p>
+                        <p>{story.created_at}</p>
+                    </div>
                 ))}
                 <h1>user stories</h1>
                 {stories.map(story=>(
-                    <div>{story.title}</div>
+                    <div>
+                        <p>{story.title}</p>
+                        <p>{story.story}</p>
+                        <p>{story.created_at}</p>
+                    </div>
                 ))}
             </div>
         </div>
