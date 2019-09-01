@@ -1,10 +1,6 @@
 import React from 'react';
-import './App.css';
-
 import { Route } from 'react-router-dom'
-
 import PrivateRoute from './components/PrivateRoute.js'
-
 import StoryForm from './components/StoryForm';
 import LogIn from './components/Login';
 import ProfilePage from './components/ProfilePage.js'
