@@ -27,7 +27,9 @@ const Nav = () => {
   };
   return (
     <TopBar className='space'>
+      <Link to='/'>
       <PageTitle>StoryTelling</PageTitle>
+          </Link>
       {token ? (
         <div className='nav'>
           <Link to='/feed'>
@@ -46,9 +48,7 @@ const Nav = () => {
         </div>
       ) : (
         <div>
-          <Link to='/'>
-            <button className='nav-link'>Home</button>
-          </Link>
+          
         </div>
       )}
       {/* <div className='flex'>

@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   text-decoration: none;
+  outline: none;
 }
 
 body {
@@ -20,6 +21,7 @@ code {
 button {
   cursor: pointer;
 }
+
 
 .flex {
   display: flex;

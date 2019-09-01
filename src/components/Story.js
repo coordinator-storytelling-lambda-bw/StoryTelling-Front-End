@@ -7,10 +7,11 @@ import styled from 'styled-components';
 const FullStory = styled.div`
   
   background-color: #14b1ab;
-  width: 400px;
+  min-width: 400px;
+  max-width: 800px;
   padding: 5px 20px 20px 20px;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
-  margin-bottom: 20px;
+  margin: 40px auto;
   
   h2 {
     color: #faa220;
@@ -44,7 +45,49 @@ const FullStory = styled.div`
       }
   }
  
-`;
+`
+const StoryContent = styled.div`
+
+background-color: white;
+width: 100%;
+min-height: 60px;
+text-align: left;
+padding: 0 5px;
+margin: 0 auto 8px auto; 
+
+  p {
+    color: black;
+
+  }
+`
+const FancyButton = styled.button`
+
+  min-width: 150px;
+  border: 2px solid #3A3480;
+  background: #3A3480;
+  padding: 5px 8px;
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  box-shadow: 1px 2px 0px 1px rgba(0, 0, 0, 0.69);
+  margin: 5px;
+
+  :hover {
+
+    background: #C0326A;
+    border: 2px solid #C0326A;
+    transition: all ease-in-out 0.2s;
+    top: 2px;
+    left: 1px;
+    box-shadow: none;
+    position: relative;
+
+  }
+
+`
+;
 
 export default function Story(props) {
   const [story, setStory] = useState();
@@ -105,7 +148,7 @@ export default function Story(props) {
   }
 
   const deleteObj = e => {
-    const confirm = window.confirm('Are you sure you want to delet this story?')
+    const confirm = window.confirm('Are you sure you want to delete this story?')
     if(confirm == true) {
       axios
       .delete(`https://storytelling-back-end.herokuapp.com/api/stories/delete/${story.id}`, config())
@@ -120,14 +163,14 @@ export default function Story(props) {
   if(!editState){
     return (
       <FullStory>
-        <h1>{story.title}</h1>
-        <h3>from {story.country}</h3>
+        <h1>"{story.title}"</h1>
+        <h3>A story from {story.country}<br/>by {story.posted_by}</h3>
         <h3><span><Date /></span></h3>
-        <p>{story.story}</p>
-        <button>DONATE</button>
-        <button onClick={()=>{saveStory(story)}}>Save</button>
-        {logged.id === story.user_id ? <button onClick={() => setEditState(true)}>Edit</button>: null }
-        {logged.id === story.user_id ? <button onClick={deleteObj}>Delete</button>: null}
+        <StoryContent><p>{story.story}</p></StoryContent>
+        <FancyButton>DONATE</FancyButton>
+        <FancyButton onClick={()=>{saveStory(story)}}>Save</FancyButton>
+        {logged.id === story.user_id ? <FancyButton onClick={() => setEditState(true)}>Edit</FancyButton>: null }
+        {logged.id === story.user_id ? <FancyButton onClick={deleteObj}>Delete</FancyButton>: null}
       </FullStory>
     );
   } else {
@@ -148,8 +191,8 @@ export default function Story(props) {
           value={editObj.country}
           onChange={changeHandler}
         />
-        <button type='submit'>Done</button>
-        <button onClick={cancelEdit}>Cancel</button>
+        <FancyButton type='submit'>Done</FancyButton>
+        <FancyButton onClick={cancelEdit}>Cancel</FancyButton>
       </form>
     )
   }
