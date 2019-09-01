@@ -88,7 +88,7 @@ box-shadow: 1px 2px 0px 1px rgba(0, 0, 0, 0.69);
 
 function StoryForm({ errors, touched }) {
   return (
-    <StoryFormElement><TextField>
+    <TextField><Form>
 
     <FormTitle>Share Your Story</FormTitle>
 
@@ -129,7 +129,7 @@ function StoryForm({ errors, touched }) {
       </div>
 
       <PrettyButton>Submit Story</PrettyButton>
-      </TextField></StoryFormElement>
+      </Form></TextField>
   );
 }
 

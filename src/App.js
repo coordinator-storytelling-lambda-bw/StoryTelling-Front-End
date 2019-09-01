@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute.js'
+import LocalRoute from './components/LocalRoute.js'
 import StoryForm from './components/StoryForm';
 import LogIn from './components/Login';
 import ProfilePage from './components/ProfilePage.js'
@@ -15,9 +16,9 @@ function App() {
     <div className="App">
         {/* <StoryForm/> */}
         <Route path='/' component={Nav} />
-        <Route exact path='/signup' component={SignUp}/>
-        <Route exact path='/login' component={LogIn} />
-        <Route exact path='/' component={HomePage}/>
+        <LocalRoute exact path='/signup' component={SignUp}/>
+        <LocalRoute exact path='/login' component={LogIn} />
+        <LocalRoute exact path='/' component={HomePage}/>
         <PrivateRoute exact path='/feed' component={Feed} />
         <PrivateRoute exact path='/feed/:id' component={Story}/>
         <PrivateRoute exact path='/profile' component={ProfilePage} />

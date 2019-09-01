@@ -14,8 +14,7 @@ const StoryContent = styled.div`
 
 background-color: white;
 width: 90%;
-min-height: 60px;
-max-height: 90px;
+height: 60px;
 overflow: hidden;
 text-align: left;
 padding: 0 5px;
@@ -32,6 +31,7 @@ const StoryBox = styled.div`
   padding: 5px 20px 20px 20px;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
   margin-bottom: 20px;
+  height: 230px;
 
   h2 {
     color: #faa220;
