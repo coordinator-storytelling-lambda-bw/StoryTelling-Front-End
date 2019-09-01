@@ -4,23 +4,35 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StoryGrid = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 900px;
+  margin: 20px auto;
+`;
+const StoryContent = styled.div`
 
-display: flex;
-justify-content: space-evenly;
-flex-wrap: wrap;
-max-width: 900px;
-margin: 20px auto;
+background-color: white;
+width: 90%;
+min-height: 60px;
+max-height: 90px;
+overflow: hidden;
+text-align: left;
+padding: 0 5px;
+margin: 0 auto 8px auto; 
 
+  p {
+    color: black;
+
+  }
 `
-
 const StoryBox = styled.div`
-  
   background-color: #14b1ab;
   width: 400px;
   padding: 5px 20px 20px 20px;
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
   margin-bottom: 20px;
-  
+
   h2 {
     color: #faa220;
     background-color: #3a3480;
@@ -30,7 +42,7 @@ const StoryBox = styled.div`
     box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
     margin: 10px 5px 20px 5px;
   }
-  h3{
+  h3 {
     color: white;
     text-shadow: 1px 1px 1px black;
     margin-top: -10px;
@@ -46,14 +58,13 @@ const StoryBox = styled.div`
     margin: 0 auto;
 
     :hover {
-        top: 2px;
-        left: 2px;
-        box-shadow: none;
-        position: relative;
-      }
+      top: 2px;
+      left: 2px;
+      box-shadow: none;
+      position: relative;
+    }
   }
- 
-`;
+`
 
 const Feed = () => {
   const [stories, setStories] = useState();
@@ -104,9 +115,12 @@ const Feed = () => {
             return (
               <div>
                 <StoryBox key={each.id}>
-                  <h2>"{each.story}"</h2>
-                  <h3>A story by {each.posted_by}</h3>
-                  <NavLink to={`/feed/${each.id}`}><h5>Full Story</h5></NavLink>
+                  <h2>"{each.title}"</h2>
+                  <h3>A story from {each.country}<br/>by {each.posted_by}</h3>
+                  <StoryContent> <p>{each.story}</p> </StoryContent>
+                  <NavLink to={`/feed/${each.id}`}>
+                    <h5>Full Story</h5>
+                  </NavLink>
                 </StoryBox>
               </div>
             );
@@ -114,9 +128,12 @@ const Feed = () => {
             return (
               <div>
                 <StoryBox key={each.id}>
-                  <h2>"{each.story}"</h2>
-                  <h3>A story by {each.posted_by}</h3>
-                  <NavLink to={`/feed/${each.id}`}><h5>Full Story</h5></NavLink>
+                  <h2>"{each.title}"</h2>
+                  <h3>A story from {each.country}<br/>by {each.posted_by}</h3>
+                  <StoryContent> <p>{each.story}</p> </StoryContent>  
+                  <NavLink to={`/feed/${each.id}`}>
+                    <h5>Full Story</h5>
+                  </NavLink>
                 </StoryBox>
               </div>
             );

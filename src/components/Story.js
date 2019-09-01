@@ -2,44 +2,49 @@ import React, { useState, useEffect } from 'react';
 import Date from './Date';
 import axios from 'axios';
 import config from './AxiosConfig'
-// import styled from 'styled-components';
+import styled from 'styled-components';
 
-// const StoryBox = styled.div` 
-// background-color: #14b1ab;
-// max-width: 350px;
-// padding: 20px;
-// box-shadow: 2px 2px 4px 0px rgba(0,0,0,1);
-// h1 {
-//   color: #faa220;
-//   background-color: #3a3480;
-//   border-radius: 10px;
-//   padding-bottom: 5px;
-//   text-shadow: 1px 1px 3px black;
-//   box-shadow: 2px 2px 4px 0px rgba(0,0,0,1);
-// }
-// h2 {
-//   color: #C0326A;
-//   text-shadow: 1px 1px 1px black;
-//   margin-top: -10px;
-// }
-// h3 {
-//   color: #FAA220;
-//   background-color: #3a3480;
-//   border-radius: 10px;
-//   padding-bottom: 5px;
-//   text-shadow: 2px 1px 1px black;
-//   box-shadow: 2px 2px 4px 0px rgba(0,0,0,1);
-// }
-// h3 span {
-//   color: white;
-//   background-color: none;
-// }
-// p {
-//   background-color: white;
-//   border-radius: 5px;
-// }
+const FullStory = styled.div`
+  
+  background-color: #14b1ab;
+  width: 400px;
+  padding: 5px 20px 20px 20px;
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
+  margin-bottom: 20px;
+  
+  h2 {
+    color: #faa220;
+    background-color: #3a3480;
+    border-radius: 10px;
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 3px black;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
+    margin: 10px 5px 20px 5px;
+  }
+  h3{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    margin-top: -10px;
+  }
+  h5 {
+    color: white;
+    width: 100px;
+    background-color: #c0326a;
+    border-radius: 10px;
+    text-shadow: 2px 1px 1px black;
+    padding: 3px 0;
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 1);
+    margin: 0 auto;
 
-// `
+    :hover {
+        top: 2px;
+        left: 2px;
+        box-shadow: none;
+        position: relative;
+      }
+  }
+ 
+`;
 
 export default function Story(props) {
   const [story, setStory] = useState();
@@ -114,7 +119,7 @@ export default function Story(props) {
   if(!story || !logged)return(<div>Loading...</div>)
   if(!editState){
     return (
-      <div>
+      <FullStory>
         <h1>{story.title}</h1>
         <h3>from {story.country}</h3>
         <h3><span><Date /></span></h3>
@@ -123,7 +128,7 @@ export default function Story(props) {
         <button onClick={()=>{saveStory(story)}}>Save</button>
         {logged.id === story.user_id ? <button onClick={() => setEditState(true)}>Edit</button>: null }
         {logged.id === story.user_id ? <button onClick={deleteObj}>Delete</button>: null}
-      </div>
+      </FullStory>
     );
   } else {
     return (

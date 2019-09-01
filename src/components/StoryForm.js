@@ -153,7 +153,7 @@ const FormikStorySubmitForm = withFormik({
     console.log(values);
 
     axios
-    .post('https://storytelling-back-end.herokuapp.com/api/stories/add', {story: values.story, country:values.country, title: values.country} , {headers: {authorization: localStorage.getItem('token')}})
+    .post('https://storytelling-back-end.herokuapp.com/api/stories/add', {story: values.story, country:values.country, title: values.title} , {headers: {authorization: localStorage.getItem('token')}})
       .then((res) => {
         console.log(res);
         resetForm();
