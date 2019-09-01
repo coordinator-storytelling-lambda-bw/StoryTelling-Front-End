@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import topBarBgImg from '../pattern.png';
 
@@ -17,13 +17,13 @@ const TopBar = styled.div`
   box-shadow: 0px 2px 2px rgba(0,0,0,0.8);
 `;
 
-const Nav = () => {
+const Nav = props => {
   const token = localStorage.getItem('token');
   const user = JSON.parse(localStorage.getItem('user'));
 
   const logOut = () => {
-    window.location.reload();
     localStorage.removeItem('token');
+    props.history.push('/')
   };
   return (
     <TopBar className='space'>
@@ -60,4 +60,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default withRouter(Nav);
