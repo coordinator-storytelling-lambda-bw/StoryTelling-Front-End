@@ -10,8 +10,9 @@ import LogIn from './components/Login';
 import ProfilePage from './components/ProfilePage.js'
 import SignUp from './components/SignUp.js';
 import HomePage from './components/HomePage';
-import Nav from './components/Nav.js'
-import Feed from './components/Feed.js'
+import Nav from './components/Nav.js';
+import Feed from './components/Feed.js';
+import Story from './components/Story.js';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path='/login' component={LogIn} />
         <Route exact path='/' component={HomePage}/>
         <PrivateRoute exact path='/feed' component={Feed} />
+        <PrivateRoute exact path='/feed/:id' component={Story}/>
         <PrivateRoute exact path='/profile' component={ProfilePage} />
     </div>
   );

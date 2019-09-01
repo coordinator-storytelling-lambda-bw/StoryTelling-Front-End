@@ -31,7 +31,7 @@ export default function HomePage(){
       </div>
       <div className='story-preview'>
         <h1>Some Recent Stories</h1>
-        <div className='stories-list'><div>stories loaded in here</div></div>
+      
         
         <span onClick={() => setBool(!bool)} className='btn-2' to=''>See More</span>
         {!stories ? <div className={!bool ? 'none' : ''}>Loading...</div>:
