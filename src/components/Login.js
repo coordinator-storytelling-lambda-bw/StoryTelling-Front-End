@@ -4,7 +4,7 @@ import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
-// import styled from 'styled-components';
+
 
 function LoginForm({ errors, touched, history }) {
   return (
@@ -17,7 +17,8 @@ function LoginForm({ errors, touched, history }) {
         <Field type='password' name='password' placeholder='Password' />
         {touched.password && errors.password && <p>{errors.password}</p>}
       </div>
-      <button>Log In</button>
+      <button className = "btn-3">Log In</button>
+      
     </Form>
   );
 }

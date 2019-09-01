@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { NavLink } from "react-router-dom";
 import axios from 'axios'
 import styled from 'styled-components';
+import Login from './Login';
 
 const StoryBox = styled.div`
   
@@ -67,12 +68,21 @@ margin-bottom: 8px;
 const SeeMoreButton = styled.button`
 margin-bottom: 50px;
 `
+const LogInButton = styled.button `
+display: ${props => props.showLogin};
+`
+
+const LogInArea = styled.div`
+display: ${props => props.showLoginForm};
+`
 ;
 
 
 export default function HomePage(){
   const [bool, setBool] = useState(false)
   const [stories, setStories] = useState()
+  const [showLoginForm, setShowLoginForm] = useState("none");
+  const [showLogin, setShowLogin] = useState("block");
   console.log(stories)
 
   useEffect(() => {
@@ -94,8 +104,11 @@ export default function HomePage(){
       <div className='homepage-box-2'>
       <h2>Join the Community!</h2>
         <NavLink className='btn-1' to='/signup'>Sign Up</NavLink>
-        <NavLink className='btn-2' to='/login'>Log in</NavLink>
-        
+        <LogInButton showLogin = { showLogin } className='btn-2' onClick={()=> {
+        setShowLoginForm("block") 
+        setShowLogin("none")
+        }}>Log in</LogInButton>
+        <LogInArea showLoginForm = {showLoginForm}><Login /></LogInArea>
       </div>
       <div className='story-preview'>
         <h1>Some Recent Stories</h1>
