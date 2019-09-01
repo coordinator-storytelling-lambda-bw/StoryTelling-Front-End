@@ -6,6 +6,10 @@ import axios from 'axios';
 
 import styled from 'styled-components';
 
+const StoryFormElement = styled.form`
+margin: 30px 20px;
+`
+
 const FormTitle = styled.h1`
   font-family: 'Finger Paint', cursive;
   font-size: 3rem;
@@ -64,16 +68,27 @@ const TextField = styled.div`
 const PrettyButton = styled.button`
 
 background-color: #c0326a;
+border: 2px solid #c0326a;
 font-size: 20px;
 color: white;
 padding: 8px;
+text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+border-radius: 10px;
+box-shadow: 1px 2px 0px 1px rgba(0, 0, 0, 0.69);
 
+:hover {
+  transition: all ease-in-out 0.1s;
+  top: 2px;
+  left: 1px;
+  box-shadow: none;
+  position: relative;
+}
 `
 
 
 function StoryForm({ errors, touched }) {
   return (
-    <Form><TextField>
+    <StoryFormElement><TextField>
 
     <FormTitle>Share Your Story</FormTitle>
 
@@ -114,7 +129,7 @@ function StoryForm({ errors, touched }) {
       </div>
 
       <PrettyButton>Submit Story</PrettyButton>
-      </TextField></Form>
+      </TextField></StoryFormElement>
   );
 }
 
