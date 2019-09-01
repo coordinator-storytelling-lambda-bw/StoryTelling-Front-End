@@ -40,17 +40,10 @@ button {
   display: flex;
 }
 
-.space {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border: 2px solid red
-}
-
 span {
-  cursor: pointer
+  cursor: pointer;
 }
 
 .none {
-  display: none
+  display: none;
 }

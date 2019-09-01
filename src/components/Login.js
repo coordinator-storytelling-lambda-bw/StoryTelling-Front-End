@@ -56,6 +56,7 @@ const FormikLoginForm = withFormik({
       })
       .catch((err) => {
         console.log(err, 'hi');
+        alert("Username and/or password not found")
         setSubmitting(false);
       });
   }
